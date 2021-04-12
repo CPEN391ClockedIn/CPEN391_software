@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Delete resource &apos;Altera-SoCFPGA-HardwareLib-16550-CV-ARMCC&apos;" deleteContents="false" description="Delete resource &apos;Altera-SoCFPGA-HardwareLib-16550-CV-ARMCC&apos;" element1="/Altera-SoCFPGA-HardwareLib-16550-CV-ARMCC" flags="7" id="org.eclipse.ltk.core.refactoring.delete.resources" resources="1" stamp="1618084423598"/>
+</session>

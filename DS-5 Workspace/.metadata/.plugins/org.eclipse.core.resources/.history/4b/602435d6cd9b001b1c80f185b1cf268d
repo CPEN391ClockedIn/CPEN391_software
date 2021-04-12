@@ -1,0 +1,170 @@
+#define RS232_ReceiverFifo        ((volatile unsigned char *)(0xFF210200))
+#define RS232_TransmitterFifo     ((volatile unsigned char *)(0xFF210200))
+#define RS232_InterruptEnableReg  ((volatile unsigned char *)(0xFF210202))
+#define RS232_InterruptIdentificationReg ((volatile unsigned char *)(0xFF210204))
+#define RS232_FifoControlReg ((volatile unsigned char *)(0xFF210204))
+#define RS232_LineControlReg ((volatile unsigned char *)(0xFF210206))
+#define RS232_ModemControlReg ((volatile unsigned char *)(0xFF210208))
+#define RS232_LineStatusReg ((volatile unsigned char *)(0xFF21020A))
+#define RS232_ModemStatusReg ((volatile unsigned char *)(0xFF21020C))
+#define RS232_ScratchReg ((volatile unsigned char *)(0xFF21020E))
+#define RS232_DivisorLatchLSB ((volatile unsigned char *)(0xFF210200))
+#define RS232_DivisorLatchMSB ((volatile unsigned char *)(0xFF210202))
+
+#define TRUE 1
+#define FALSE 0
+
+#include <stdio.h>
+#include <time.h>
+
+void Init_RS232(void);
+int putchar_uart(int, volatile unsigned char *, volatile unsigned char *);
+int getchar_uart(volatile unsigned char *, volatile unsigned char *);
+int TestForReceivedData(volatile unsigned char *);
+void Flush(volatile unsigned char *, volatile unsigned char *);
+int send_command(char*, char*);
+
+
+int main() {
+
+	// Get Wi-Fi module ready
+	Init_RS232();
+	Flush(RS232_LineStatusReg, RS232_ReceiverFifo);
+
+	char response[1024] = "";
+
+	int res = send_command("dofile(\"Connect.lua\")", response);
+	printf("%s \n", response);
+
+	// use external tools to encode image into base64 string
+	const char * fileName = "img_b64";
+	FILE* file = fopen(fileName, "r");
+	char line[256];
+
+	while (fgets(line, sizeof(line), file)) {
+		char command[512];
+
+		strcpy(command, "save_image ( \" base64 \", \"");
+		strcpy(command, line);
+		strcpy(command, "\")");
+		send_command(command, response);
+	}
+
+	send_command("dofile(\"send_b64\" )");
+
+	return 0;
+}
+
+int send_command(char * command, char * response) {
+
+	int received_size = 0;
+	printf("executing command: %s \n", command);
+
+	while (*command) {
+		// delay to make sure no overflow
+		delay(1000);
+		putchar_uart(*command, RS232_LineStatusReg, RS232_TransmitterFifo);
+		delay(1000);
+		command++;
+	}
+
+	// execute the command on ESP8266 with enter
+	putchar_uart('\n', RS232_LineStatusReg, RS232_ReceiverFifo);
+
+	delay(10000);
+	while (TestForReceivedData(RS232_LineStatusReg)) {
+		response[received_size++] = (char) getchar_uart(RS232_LineStatusReg,
+		RS232_ReceiverFifo);
+
+		delay (10000);
+	}
+
+	// print out the size of received data for debug
+//	printf("Got %i bytes\n", received_size);
+
+	// end the string with '\0'
+	response[received_size] = '\0';
+
+	return received_size;
+}
+
+
+
+/**************************************************************************
+ /* Subroutine to initialise the RS232 Port by writing some data
+ ** to the internal registers.
+ ** Call this function at the start of the program before you attempt
+ ** to read or write to data via the RS232 port
+ **
+ ** Refer to UART data sheet for details of registers and programming
+ ***************************************************************************/
+
+void Init_RS232(void) {
+	// set bit 7 of Line Control Register to 1, to gain access to the baud rate registers
+	unsigned char LCR = *RS232_LineControlReg | 0x80;
+	*RS232_LineControlReg = LCR;
+	// set Divisor latch (LSB and MSB) with correct value for required baud rate
+	// example 0x0145
+	// Baud rate 9600, 50MHz / (16 * 9600) = 325 (0x0145)
+	*RS232_DivisorLatchLSB = 0x45;
+	*RS232_DivisorLatchMSB = 0x01;
+	// set bit 7 of Line control register back to 0 and
+	// program other bits in that reg for 8 bit data,
+	// 1 stop bit, no parity etc
+	//0000 0011
+	*RS232_LineControlReg = 0x03;
+	// Reset the Fifo’s in the FiFo Control Reg by setting bits 1 & 2
+	*RS232_FifoControlReg = *RS232_FifoControlReg | 0x06;
+	// Now Clear all bits in the FiFo control registers
+	*RS232_FifoControlReg = *RS232_FifoControlReg ^ 0x06;
+}
+
+int putchar_uart(int c, volatile unsigned char * LineStatusReg,
+		volatile unsigned char * TransmitterFifo) {
+	// wait for Transmitter Holding Register bit (5) of line status register to be '1'
+	// indicating we can write to the device
+	while ((*LineStatusReg & 0x20) != 0x20) {
+		// polling
+	}
+
+	// write character to Transmitter fifo register
+	*TransmitterFifo = (unsigned char) c;
+
+	// return the character we printed
+	return c;
+}
+
+int getchar_uart(volatile unsigned char * LineStatusReg,
+		volatile unsigned char * ReceiverFifo) {
+	// wait for Data Ready bit (0) of line status register to be '1'
+	// read new character from ReceiverFiFo register
+	while ((*LineStatusReg & 0x01) != 0x01) {
+		// polling
+	}
+	// return new character
+	return (int) *ReceiverFifo;
+}
+
+// the following function polls the UART to determine if any character
+// has been received. It doesn't wait for one, or read it, it simply tests
+// to see if one is available to read from the FIFO
+
+int TestForReceivedData(volatile unsigned char * LineStatusReg) {
+	// if RS232_LineStatusReg bit 0 is set to 1
+	//return TRUE, otherwise return FALSE
+	return ((*LineStatusReg & 0x01) == 0x01) ? TRUE : FALSE;
+}
+
+//
+// Remove/flush the UART receiver buffer by removing any unread characters
+//
+void Flush(volatile unsigned char * LineStatusReg,
+		volatile unsigned char * ReceiverFifo) {
+	// while bit 0 of Line Status Register == ‘1’
+	// read unwanted char out of fifo receiver buffer
+	int flush;
+	while ((*LineStatusReg & 0x01) == 0x01) {
+		flush = *ReceiverFifo;
+	}
+	return; // no more characters so return
+}

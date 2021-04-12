@@ -1,0 +1,48 @@
+19:17:51 **** Incremental Build of configuration Debug for project cpen391_linux ****
+make all 
+'Building file: ../linux_test.c'
+'Invoking: GCC C Compiler 4 [arm-linux-gnueabihf]'
+arm-linux-gnueabihf-gcc -std=c99 -Dsoc_cv_av -I"C:\intelFPGA\18.1\embedded\ip\altera\hps\altera_hps\hwlib\include" -I"C:\intelFPGA\18.1\embedded\ip\altera\hps\altera_hps\hwlib\include\soc_cv_av" -O0 -g -Wall -c -fmessage-length=0 -MMD -MP -MF"linux_test.d" -MT"linux_test.o" -o "linux_test.o" "../linux_test.c"
+../linux_test.c: In function 'main':
+../linux_test.c:57:2: warning: passing argument 3 of 'pthread_create' from incompatible pointer type [enabled by default]
+  pthread_create(&thread1,NULL, update,Red_Leds);
+  ^
+In file included from ../linux_test.c:6:0:
+c:\intelfpga\18.1\embedded\ds-5\sw\gcc\arm-linux-gnueabihf\libc\usr\include\pthread.h:244:12: note: expected 'void * (*)(void *)' but argument is of type 'void * (*)(unsigned int *)'
+ extern int pthread_create (pthread_t *__restrict __newthread,
+            ^
+../linux_test.c:58:2: warning: passing argument 3 of 'pthread_create' from incompatible pointer type [enabled by default]
+  pthread_create(&thread2,NULL, update,HEX1);
+  ^
+In file included from ../linux_test.c:6:0:
+c:\intelfpga\18.1\embedded\ds-5\sw\gcc\arm-linux-gnueabihf\libc\usr\include\pthread.h:244:12: note: expected 'void * (*)(void *)' but argument is of type 'void * (*)(unsigned int *)'
+ extern int pthread_create (pthread_t *__restrict __newthread,
+            ^
+../linux_test.c:59:2: warning: passing argument 3 of 'pthread_create' from incompatible pointer type [enabled by default]
+  pthread_create(&thread3,NULL, update,HEX2);
+  ^
+In file included from ../linux_test.c:6:0:
+c:\intelfpga\18.1\embedded\ds-5\sw\gcc\arm-linux-gnueabihf\libc\usr\include\pthread.h:244:12: note: expected 'void * (*)(void *)' but argument is of type 'void * (*)(unsigned int *)'
+ extern int pthread_create (pthread_t *__restrict __newthread,
+            ^
+../linux_test.c:60:2: warning: passing argument 3 of 'pthread_create' from incompatible pointer type [enabled by default]
+  pthread_create(&thread4,NULL, update,HEX3);
+  ^
+In file included from ../linux_test.c:6:0:
+c:\intelfpga\18.1\embedded\ds-5\sw\gcc\arm-linux-gnueabihf\libc\usr\include\pthread.h:244:12: note: expected 'void * (*)(void *)' but argument is of type 'void * (*)(unsigned int *)'
+ extern int pthread_create (pthread_t *__restrict __newthread,
+            ^
+../linux_test.c: In function 'update':
+../linux_test.c:22:1: warning: control reaches end of non-void function [-Wreturn-type]
+ }
+ ^
+'Finished building: ../linux_test.c'
+' '
+'Building target: cpen391_linux'
+'Invoking: GCC C Linker 4 [arm-linux-gnueabihf]'
+arm-linux-gnueabihf-gcc  -o "cpen391_linux"  ./linux_test.o   -lpthread
+'Finished building target: cpen391_linux'
+' '
+
+19:17:52 Build Finished (took 962ms)
+

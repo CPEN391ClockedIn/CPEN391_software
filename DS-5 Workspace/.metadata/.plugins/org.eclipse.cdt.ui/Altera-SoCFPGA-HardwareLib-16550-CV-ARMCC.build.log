@@ -1,0 +1,10 @@
+12:51:26 **** Build of configuration Default for project Altera-SoCFPGA-HardwareLib-16550-CV-ARMCC ****
+make all 
+armcc -g -O0 --diag_error=warning --diag_suppress=9931 --cpu=Cortex-A9 --no_unaligned_access -IC:/intelFPGA/18.1/embedded/ds-5//../ip/altera/hps/altera_hps/hwlib/include -IC:/intelFPGA/18.1/embedded/ds-5//../ip/altera/hps/altera_hps/hwlib/include/soc_cv_av -Dsoc_cv_av --strict --c99 -c hwlib.c -o hwlib.o
+process_begin: CreateProcess(NULL, armcc -g -O0 --diag_error=warning --diag_suppress=9931 --cpu=Cortex-A9 --no_unaligned_access -IC:/intelFPGA/18.1/embedded/ds-5//../ip/altera/hps/altera_hps/hwlib/include -IC:/intelFPGA/18.1/embedded/ds-5//../ip/altera/hps/altera_hps/hwlib/include/soc_cv_av -Dsoc_cv_av --strict --c99 -c hwlib.c -o hwlib.o, ...) failed.
+make (e=2): The system cannot find the file specified.
+
+make: *** [Makefile:89: hwlib.o] Error 2
+
+12:51:26 Build Finished (took 144ms)
+

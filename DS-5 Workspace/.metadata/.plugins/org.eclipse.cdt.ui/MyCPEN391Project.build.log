@@ -1,0 +1,133 @@
+14:55:15 **** Incremental Build of configuration Debug for project MyCPEN391Project ****
+make all 
+'Building file: ../test_serial.c'
+'Invoking: Arm C Compiler 5'
+armcc -I"C:\intelFPGA\18.1\embedded\ip\altera\hps\altera_hps\hwlib\include" -I"C:\intelFPGA\18.1\embedded\ds-5\sw\gcc\arm-linux-gnueabihf\include" -I"C:\intelFPGA\18.1\embedded\ds-5\sw\gcc\arm-linux-gnueabihf\libc\usr\include" -I"C:\intelFPGA\18.1\embedded\ds-5\sw\gcc\lib\gcc\arm-linux-gnueabihf\4.8.3\include" -I"C:\intelFPGA\18.1\embedded\ds-5\sw\gcc\lib\gcc\arm-linux-gnueabihf\4.8.3\include-fixed" -I"C:\intelFPGA\18.1\embedded\ip\altera\hps\altera_hps\hwlib\include\soc_cv_av" --c99 -O0 -g --md --depend_format=unix_escaped --no_depend_system_headers -c -o "test_serial.o" "../test_serial.c"
+"C:\intelFPGA\18.1\embedded\ds-5\sw\gcc\arm-linux-gnueabihf\libc\usr\include\stdc-predef.h", line 54: Error:  #46-D: "__STDC_ISO_10646__"  is predefined; attempted redefinition ignored
+  #define __STDC_ISO_10646__		201103L
+          ^
+"C:\intelFPGA\18.1\embedded\ds-5\sw\gcc\arm-linux-gnueabihf\libc\usr\include\bits/stat.h", line 72: Error:  #70: incomplete type is not allowed
+      struct timespec st_atim;		/* Time of last access.  */
+                      ^
+"C:\intelFPGA\18.1\embedded\ds-5\sw\gcc\arm-linux-gnueabihf\libc\usr\include\bits/stat.h", line 73: Error:  #70: incomplete type is not allowed
+      struct timespec st_mtim;		/* Time of last modification.  */
+                      ^
+"C:\intelFPGA\18.1\embedded\ds-5\sw\gcc\arm-linux-gnueabihf\libc\usr\include\bits/stat.h", line 74: Error:  #70: incomplete type is not allowed
+      struct timespec st_ctim;		/* Time of last status change.  */
+                      ^
+"C:\intelFPGA\18.1\embedded\ds-5\sw\gcc\arm-linux-gnueabihf\libc\usr\include\bits/pthreadtypes.h", line 43: Error:  #125: expected a "("
+    long int __align;
+                    ^
+"C:\intelFPGA\18.1\embedded\ds-5\sw\gcc\arm-linux-gnueabihf\libc\usr\include\bits/pthreadtypes.h", line 44: Error:  #40: expected an identifier
+  };
+  ^
+"C:\intelFPGA\18.1\embedded\ds-5\sw\gcc\arm-linux-gnueabihf\libc\usr\include\bits/pthreadtypes.h", line 44: Warning:  #65-D: expected a ";"
+  };
+  ^
+"C:\intelFPGA\18.1\embedded\ds-5\sw\gcc\arm-linux-gnueabihf\libc\usr\include\bits/pthreadtypes.h", line 74: Error:  #3092: anonymous unions are only supported in --gnu mode, or when enabled with #pragma anon_unions
+      };
+       ^
+"C:\intelFPGA\18.1\embedded\ds-5\sw\gcc\arm-linux-gnueabihf\libc\usr\include\bits/pthreadtypes.h", line 77: Error:  #125: expected a "("
+    long int __align;
+                    ^
+"C:\intelFPGA\18.1\embedded\ds-5\sw\gcc\arm-linux-gnueabihf\libc\usr\include\bits/pthreadtypes.h", line 78: Error:  #40: expected an identifier
+  } pthread_mutex_t;
+  ^
+"C:\intelFPGA\18.1\embedded\ds-5\sw\gcc\arm-linux-gnueabihf\libc\usr\include\bits/pthreadtypes.h", line 78: Warning:  #65-D: expected a ";"
+  } pthread_mutex_t;
+  ^
+"C:\intelFPGA\18.1\embedded\ds-5\sw\gcc\arm-linux-gnueabihf\libc\usr\include\bits/pthreadtypes.h", line 83: Error:  #125: expected a "("
+    long int __align;
+                    ^
+"C:\intelFPGA\18.1\embedded\ds-5\sw\gcc\arm-linux-gnueabihf\libc\usr\include\bits/pthreadtypes.h", line 84: Error:  #40: expected an identifier
+  } pthread_mutexattr_t;
+  ^
+"C:\intelFPGA\18.1\embedded\ds-5\sw\gcc\arm-linux-gnueabihf\libc\usr\include\bits/pthreadtypes.h", line 84: Warning:  #65-D: expected a ";"
+  } pthread_mutexattr_t;
+  ^
+"C:\intelFPGA\18.1\embedded\ds-5\sw\gcc\arm-linux-gnueabihf\libc\usr\include\bits/pthreadtypes.h", line 103: Error:  #125: expected a "("
+    __extension__ long long int __align;
+                                       ^
+"C:\intelFPGA\18.1\embedded\ds-5\sw\gcc\arm-linux-gnueabihf\libc\usr\include\bits/pthreadtypes.h", line 104: Error:  #40: expected an identifier
+  } pthread_cond_t;
+  ^
+"C:\intelFPGA\18.1\embedded\ds-5\sw\gcc\arm-linux-gnueabihf\libc\usr\include\bits/pthreadtypes.h", line 104: Warning:  #65-D: expected a ";"
+  } pthread_cond_t;
+  ^
+"C:\intelFPGA\18.1\embedded\ds-5\sw\gcc\arm-linux-gnueabihf\libc\usr\include\bits/pthreadtypes.h", line 109: Error:  #125: expected a "("
+    long int __align;
+                    ^
+"C:\intelFPGA\18.1\embedded\ds-5\sw\gcc\arm-linux-gnueabihf\libc\usr\include\bits/pthreadtypes.h", line 110: Error:  #40: expected an identifier
+  } pthread_condattr_t;
+  ^
+"C:\intelFPGA\18.1\embedded\ds-5\sw\gcc\arm-linux-gnueabihf\libc\usr\include\bits/pthreadtypes.h", line 110: Warning:  #65-D: expected a ";"
+  } pthread_condattr_t;
+  ^
+"C:\intelFPGA\18.1\embedded\ds-5\sw\gcc\arm-linux-gnueabihf\libc\usr\include\bits/pthreadtypes.h", line 152: Error:  #125: expected a "("
+    long int __align;
+                    ^
+"C:\intelFPGA\18.1\embedded\ds-5\sw\gcc\arm-linux-gnueabihf\libc\usr\include\bits/pthreadtypes.h", line 153: Error:  #40: expected an identifier
+  } pthread_rwlock_t;
+  ^
+"C:\intelFPGA\18.1\embedded\ds-5\sw\gcc\arm-linux-gnueabihf\libc\usr\include\bits/pthreadtypes.h", line 153: Warning:  #65-D: expected a ";"
+  } pthread_rwlock_t;
+  ^
+"C:\intelFPGA\18.1\embedded\ds-5\sw\gcc\arm-linux-gnueabihf\libc\usr\include\bits/pthreadtypes.h", line 158: Error:  #125: expected a "("
+    long int __align;
+                    ^
+"C:\intelFPGA\18.1\embedded\ds-5\sw\gcc\arm-linux-gnueabihf\libc\usr\include\bits/pthreadtypes.h", line 159: Error:  #40: expected an identifier
+  } pthread_rwlockattr_t;
+  ^
+"C:\intelFPGA\18.1\embedded\ds-5\sw\gcc\arm-linux-gnueabihf\libc\usr\include\bits/pthreadtypes.h", line 159: Warning:  #65-D: expected a ";"
+  } pthread_rwlockattr_t;
+  ^
+"C:\intelFPGA\18.1\embedded\ds-5\sw\gcc\arm-linux-gnueabihf\libc\usr\include\bits/pthreadtypes.h", line 173: Error:  #125: expected a "("
+    long int __align;
+                    ^
+"C:\intelFPGA\18.1\embedded\ds-5\sw\gcc\arm-linux-gnueabihf\libc\usr\include\bits/pthreadtypes.h", line 174: Error:  #40: expected an identifier
+  } pthread_barrier_t;
+  ^
+"C:\intelFPGA\18.1\embedded\ds-5\sw\gcc\arm-linux-gnueabihf\libc\usr\include\bits/pthreadtypes.h", line 174: Warning:  #65-D: expected a ";"
+  } pthread_barrier_t;
+  ^
+"C:\intelFPGA\18.1\embedded\ds-5\sw\gcc\arm-linux-gnueabihf\libc\usr\include\bits/pthreadtypes.h", line 179: Error:  #125: expected a "("
+    int __align;
+               ^
+"C:\intelFPGA\18.1\embedded\ds-5\sw\gcc\arm-linux-gnueabihf\libc\usr\include\bits/pthreadtypes.h", line 180: Error:  #40: expected an identifier
+  } pthread_barrierattr_t;
+  ^
+"C:\intelFPGA\18.1\embedded\ds-5\sw\gcc\arm-linux-gnueabihf\libc\usr\include\bits/pthreadtypes.h", line 180: Warning:  #65-D: expected a ";"
+  } pthread_barrierattr_t;
+  ^
+"../test_serial.c", line 22: Warning:  #940-D: missing return statement at end of non-void function "update" 
+  }
+  ^
+"../test_serial.c", line 49: Error:  #852: expression must be a pointer to a complete object type
+  	Red_Leds =(unsigned int *)(virtual_base + (( RED_LEDS_OFFSET ) & (HW_REGS_MASK ) ));
+  	                           ^
+"../test_serial.c", line 50: Error:  #852: expression must be a pointer to a complete object type
+  	HEX1 =(unsigned int *)(virtual_base + (( HEX1_OFFSET ) & (HW_REGS_MASK ) ));
+  	                       ^
+"../test_serial.c", line 51: Error:  #852: expression must be a pointer to a complete object type
+  	HEX2 =(unsigned int *)(virtual_base + (( HEX2_OFFSET ) & (HW_REGS_MASK ) ));
+  	                       ^
+"../test_serial.c", line 52: Error:  #852: expression must be a pointer to a complete object type
+  	HEX3 =(unsigned int *)(virtual_base + (( HEX3_OFFSET ) & (HW_REGS_MASK ) ));
+  	                       ^
+"../test_serial.c", line 57: Warning:  #167-D: argument of type "void *(*)(unsigned int *)" is incompatible with parameter of type "void *(*)(void *)"
+  	pthread_create(&thread1,NULL, update,Red_Leds);
+  	                              ^
+"../test_serial.c", line 58: Warning:  #167-D: argument of type "void *(*)(unsigned int *)" is incompatible with parameter of type "void *(*)(void *)"
+  	pthread_create(&thread2,NULL, update,HEX1);
+  	                              ^
+"../test_serial.c", line 59: Warning:  #167-D: argument of type "void *(*)(unsigned int *)" is incompatible with parameter of type "void *(*)(void *)"
+  	pthread_create(&thread3,NULL, update,HEX2);
+  	                              ^
+"../test_serial.c", line 60: Warning:  #167-D: argument of type "void *(*)(unsigned int *)" is incompatible with parameter of type "void *(*)(void *)"
+  	pthread_create(&thread4,NULL, update,HEX3);
+  	                              ^
+../test_serial.c: 14 warnings, 27 errors
+make: *** [subdir.mk:20: test_serial.o] Error 1
+
+14:55:16 Build Finished (took 869ms)
+
