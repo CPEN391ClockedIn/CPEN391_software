@@ -15,8 +15,7 @@
 #define FALSE 0
 
 #include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
+#include <time.h>
 
 void Init_RS232(void);
 int putchar_uart(int, volatile unsigned char *, volatile unsigned char *);
@@ -167,8 +166,8 @@ void Flush(volatile unsigned char * LineStatusReg,
 		volatile unsigned char * ReceiverFifo) {
 	// while bit 0 of Line Status Register == ‘1’
 	// read unwanted char out of fifo receiver buffer
+	int flush;
 	while ((*LineStatusReg & 0x01) == 0x01) {
-		int flush;
 		flush = *ReceiverFifo;
 	}
 	return; // no more characters so return

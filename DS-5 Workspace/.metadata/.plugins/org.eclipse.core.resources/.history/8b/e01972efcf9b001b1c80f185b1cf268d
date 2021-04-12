@@ -169,7 +169,7 @@ void Flush(volatile unsigned char * LineStatusReg,
 	// read unwanted char out of fifo receiver buffer
 	while ((*LineStatusReg & 0x01) == 0x01) {
 		int flush;
-		flush = *ReceiverFifo;
+		*flush = *ReceiverFifo;
 	}
 	return; // no more characters so return
 }
